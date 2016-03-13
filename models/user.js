@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
 				isEmail: true
 			}
 		},
-		type: {
+		user_type: {
 			type: DataTypes.STRING,
 			validate: {
 				isIn: [['customer','employee','manager']]
