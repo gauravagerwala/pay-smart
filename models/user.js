@@ -9,11 +9,11 @@ module.exports = function(sequelize, DataTypes) {
 		email: {
 			type: DataTypes.STRING,
 			allowNull: false,
-			unique: true
+			unique: true,
 			validate: {
 				isEmail: true
 			}
-		}
+		},
 		type: {
 			type: DataTypes.STRING,
 			validate: {
@@ -27,8 +27,8 @@ module.exports = function(sequelize, DataTypes) {
 			type: DataTypes.STRING
 		},
 		password: {
-			type: DataTypes.VIRTUAl,
-			allowNull: false
+			type: DataTypes.VIRTUAL,
+			allowNull: false,
 			validate: {
 				len: [7,100]
 			},

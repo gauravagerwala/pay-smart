@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/gauravagerwala/pay-smart#readme",
   "dependencies": {
-    "express": "^4.13.4"
+    "bcrypt": "^0.8.5",
+    "express": "^4.13.4",
+    "sequelize": "^3.19.3",
+    "sqlite3": "^3.1.1"
   }
 }
