@@ -1,0 +1,19 @@
+{
+  "name": "pay-smart",
+  "version": "1.0.0",
+  "description": "A REST API used for managing the sales in a grocery store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/gauravagerwala/pay-smart.git"
+  },
+  "author": "Gaurav Agerwala , Anshupriya Srivastava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gauravagerwala/pay-smart/issues"
+  },
+  "homepage": "https://github.com/gauravagerwala/pay-smart#readme"
+}
