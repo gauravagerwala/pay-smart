@@ -2,7 +2,7 @@ var Sequelize = require('sequelize');
 
 sequelize = new Sequelize(undefined,undefined,undefined,{
 	dialect: 'sqlite',
-	storage: __dirname + '/data/dev-pay-smart.sql'
+	storage: __dirname + '/data/dev-pay-smart.sqlite'
 });
 
 var db = {};

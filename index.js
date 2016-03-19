@@ -18,7 +18,7 @@ app.get('/', function(req,res) {
 app.use('/items', itemRoutes);
 app.use('/users', userRoutes);
 
-db.sequelize.sync().then( function () {
+db.sequelize.sync({force:true}).then( function () {
 	app.listen(PORT, function() {
 		console.log('Express listening on port ' + PORT);
 	});

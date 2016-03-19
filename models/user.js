@@ -39,7 +39,16 @@ module.exports = function(sequelize, DataTypes) {
 				this.setDataValue('password', value);
 				this.setDataValue('salt', salt);
 				this.setDataValue('password_hash', hasedPassword);
+				}
+			}
+		}, {
+			instanceMethods: {
+				// toPublicJson: function(){
+				// 	var json = this.toJSON();
+				// 	return _.pick()
+				// }
 			}
 		}
-	});	
+
+	);	
 };
