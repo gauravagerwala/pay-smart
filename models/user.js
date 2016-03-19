@@ -47,6 +47,29 @@ module.exports = function(sequelize, DataTypes) {
 				// 	var json = this.toJSON();
 				// 	return _.pick()
 				// }
+			},
+			classMethods: {
+				authenticate: function(body){
+					return new Promise(function(resolve, reject){
+						if(!isString(body.email) || !isString(body.password)){
+							return reject();
+						}
+
+						user.findOne({
+							where: {
+								email: body.email
+							}
+						}).then(function(user){
+							if (!user || !bcrypt.compareSync(body.password, user.get('password_hash'))) {
+								return reject();
+							}
+							resolve(user);
+						}, function (e) {
+							reject();
+						});
+					});
+				}
+
 			}
 		}
 
