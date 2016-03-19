@@ -43,10 +43,28 @@ module.exports = function(sequelize, DataTypes) {
 			}
 		}, {
 			instanceMethods: {
-				// toPublicJson: function(){
-				// 	var json = this.toJSON();
-				// 	return _.pick()
-				// }
+			toPublicJSON: function(){
+				var json = this.toJSON();
+				return _.pick(json, 'id', 'email', 'updatedAt', 'createdAt');
+			},
+			generateToken: function(type){
+				if(!_.isString(type)){
+					return undefined;
+				}
+
+				try{
+					var stringData = JSON.stringify({id: this.get('id'), type: type});
+					var encrytedData = crypto.AES.encrypt(stringData, 'abcdefgh123!@#').toString();
+					var token = jwt.sign({
+						token: encrytedData
+					}, 'qwerty012');
+
+					return token;					
+
+					} catch(e){
+						return undefined;
+					}
+				}
 			},
 			classMethods: {
 				authenticate: function(body){
@@ -67,6 +85,28 @@ module.exports = function(sequelize, DataTypes) {
 						}, function (e) {
 							reject();
 						});
+					});
+				},
+				findByToken: function(token){
+					return new Promise( function(resolve, reject){
+						try{
+							var decodedJWT = jwt.verify(token, 'qwerty012');
+							var bytes = crypto.AES.decrypt(decodedJWT.token, 'abcdefgh123!@#');
+							var tokenData = JSON.parse(bytes.toString(crypto.enc.Utf8));
+
+							user.findById(tokenData.id).then( function(user){
+								if(user){
+									resolve(user);
+								}else{
+									reject();
+								}
+
+							}, function(e){
+								reject();
+							});						
+						}catch(e){
+							reject();
+						}
 					});
 				}
 

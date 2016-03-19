@@ -17,6 +17,7 @@ router.post('/', function(req, res) {
 router.post('/login', function(req, res){
 	var body = _.pick(req.body, 'email', 'password');
 
+	
 });
 
 module.exports = router;
