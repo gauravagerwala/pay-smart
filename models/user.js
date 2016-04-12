@@ -1,7 +1,11 @@
 var bcrypt = require('bcrypt');
+var _ = require('underscore');
+var crypto = require('crypto-js');
+var jwt = require('jsonwebtoken');
+
 
 module.exports = function(sequelize, DataTypes) {
-	return sequelize.define('user',{
+	var user = sequelize.define('user',{
 		name: {
 			type: DataTypes.STRING,
 			allowNull: false
@@ -69,7 +73,7 @@ module.exports = function(sequelize, DataTypes) {
 			classMethods: {
 				authenticate: function(body){
 					return new Promise(function(resolve, reject){
-						if(!isString(body.email) || !isString(body.password)){
+						if(!_.isString(body.email) || !_.isString(body.password)){
 							return reject();
 						}
 
@@ -114,4 +118,5 @@ module.exports = function(sequelize, DataTypes) {
 		}
 
 	);	
+	return user;
 };
