@@ -1,4 +1,3 @@
-
 module.exports = function(sequelize, DataTypes){
 	return sequelize.define('item',{
 		name: {
@@ -12,6 +11,18 @@ module.exports = function(sequelize, DataTypes){
 			type: DataTypes.BOOLEAN,
 			allowNull: false,
 			defaultValue: false
+		},
+		bar_code: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		bar_code_format: {
+			type: DataTypes.STRING,
+			allowNull: false
+		},
+		price: {
+			type: DataTypes.FLOAT,
+			allowNull: true
 		}
 	});
 }
